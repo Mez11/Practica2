@@ -2,14 +2,11 @@ package com.redes.p2.cliente.view;
 
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import javax.swing.JLabel;
-import javax.swing.SpringLayout;
-import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.SpringLayout;
 
 public class CatalogoProductos {
 
