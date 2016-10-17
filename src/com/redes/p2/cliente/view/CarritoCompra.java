@@ -1,14 +1,14 @@
 package com.redes.p2.cliente.view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 
 public class CarritoCompra {
 
@@ -20,6 +20,7 @@ public class CarritoCompra {
 	private JTextField textField_1;
 	private JButton btnModificar;
 	private JButton btnFinalizarCompra;
+	private JTable productosTable;
 
 	/**
 	 * Launch the application.
@@ -66,12 +67,11 @@ public class CarritoCompra {
 		String[] columnNames = {"Id",
 		                        "Nombre",
 		                        "Precio",
-		                        "Cantidad",
-		                        "Acciones"};
+		                        "Cantidad"};
 		Object[][] data = {
 
-		     { new Integer(1),"Sombrero" ,new Double(10.0),new Integer(1),"Agregar","Modificar","Eliminar"},
-		     {new Integer(2),"Sombrero" ,new Double(10.0),new Integer(1),"Agregar","Modificar","Eliminar"}
+		     { new Integer(1),"Sombrero" ,new Double(10.0),new Integer(1) },
+		     {new Integer(2),"Sombrero" ,new Double(10.0),new Integer(1) }
 		};
 
 //Then the Table is constructed using these data and columnNames:
@@ -116,5 +116,22 @@ public class CarritoCompra {
 		btnFinalizarCompra = new JButton("Finalizar compra");
 		btnFinalizarCompra.setBounds(35, 234, 162, 25);
 		frmCarritoDeCompra.getContentPane().add(btnFinalizarCompra);
+		
+		productosTable = new JTable();
+		
+		
+		productosTable.setModel(
+				new DefaultTableModel( data, columnNames ) {
+			Class[] columnTypes = new Class[] {
+				Integer.class, String.class, Double.class, Integer.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		
+		JScrollPane tableScroll = new JScrollPane( productosTable );
+		tableScroll.setBounds(37, 28, 376, 92);
+		frmCarritoDeCompra.getContentPane().add( tableScroll );
 	}
 }
